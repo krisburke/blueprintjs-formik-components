@@ -21,4 +21,4 @@ export function filterOutObjectKeys(raw: object, removeKeys: string[]): object {
 export const isDisabled = (props: {
     form?: FormikProps<any>;
     disabled?: boolean;
-}) => (props.form && props.form.isSubmitting) || props.disabled || false;
+}) => props.disabled || false;
