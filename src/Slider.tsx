@@ -8,11 +8,7 @@ import { FieldProps } from 'formik';
 import { Omit } from './types';
 import { filterOutObjectKeys, isDisabled } from './utils';
 import { ErrorProps, withError, errorPropList } from './WithError';
-import {
-    withFormGroup,
-    WithFormGroupProps,
-    formGroupPropList,
-} from './WithFormGroup';
+import { formGroupPropList } from './WithFormGroup';
 
 export type SliderProps = FieldProps &
     BPFormGroupProps &
@@ -56,6 +52,6 @@ const SliderComponent = (props: SliderProps) => {
     return <BPSlider {...sliderProps} />;
 };
 
-export const Slider: React.ComponentType<SliderProps> = withError<
-    WithFormGroupProps<SliderProps>
->(withFormGroup<SliderProps>(SliderComponent));
+export const Slider: React.ComponentType<SliderProps> = withError<SliderProps>(
+    SliderComponent,
+);

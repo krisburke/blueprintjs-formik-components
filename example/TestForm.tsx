@@ -1,7 +1,7 @@
 import * as React from 'react';
 // import * as Yup from 'yup';
 import { Field, Form, Formik, FormikProps } from 'formik';
-import { InputGroup } from '../.';
+import { InputGroup, withFormGroup } from '../.';
 import { Checkbox } from '../.';
 import { Button } from '@blueprintjs/core';
 import { Switch } from '../.';
@@ -11,6 +11,15 @@ import { NumericInput } from '../.';
 import { RadioGroup } from '../.';
 import { Slider } from '../.';
 import { TagInput } from '../.';
+
+const TextAreaWithFormGroup = withFormGroup(TextArea);
+const CheckboxWithFormGroup = withFormGroup(Checkbox);
+const InputGroupWithFormGroup = withFormGroup(InputGroup);
+const SwitchWithFormGroup = withFormGroup(Switch);
+const SelectWithFormGroup = withFormGroup(HTMLSelect);
+const NumericInputWithFormGroup = withFormGroup(NumericInput);
+const SliderWithFormGroup = withFormGroup(Slider);
+const TagInputWithFormGroup = withFormGroup(TagInput);
 
 interface Values {
     test: string;
@@ -54,7 +63,7 @@ const TestForm = () => {
                             name="test"
                             label="Test"
                             helperText="Please add your input here."
-                            component={InputGroup}
+                            component={InputGroupWithFormGroup}
                             large={true}
                             fill={false}
                             autoFocus={true}
@@ -66,33 +75,33 @@ const TestForm = () => {
                         <Field
                             name="isActive"
                             label="Is Active?"
-                            component={Checkbox}
+                            component={CheckboxWithFormGroup}
                         />
                         <Field
                             name="isCurrent"
                             label="Is Current?"
-                            component={Switch}
+                            component={SwitchWithFormGroup}
                         />
                         <Field
                             name="description"
                             label="Description"
-                            component={TextArea}
+                            component={TextAreaWithFormGroup}
                         />
                         <Field
                             name="pickOne"
                             label="Pick One of the Following: "
-                            component={HTMLSelect}
+                            component={SelectWithFormGroup}
                             options={['', 'blue', 'red', 'green', 'yellow']}
                         />
                         <Field
                             name="howMany"
                             label="How many?"
-                            component={NumericInput}
+                            component={NumericInputWithFormGroup}
                         />
                         <Field
                             name="chooseOne"
                             label="Choose One: "
-                            component={RadioGroup} // FIXME
+                            component={RadioGroup}
                             options={[
                                 { label: 'Cat', value: 'cat' },
                                 { label: 'Dog', value: 'dog' },
@@ -102,12 +111,12 @@ const TestForm = () => {
                         <Field
                             name="selectValue"
                             label="Select a Value"
-                            component={Slider} // FIXME
+                            component={SliderWithFormGroup} // FIXME
                         />
                         <Field
                             name="tags"
                             label="Tags"
-                            component={TagInput} // FIXME
+                            component={TagInputWithFormGroup} // FIXME
                         />
                         <Button text="Submit" onClick={submitForm} />
                     </Form>

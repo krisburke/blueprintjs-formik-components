@@ -9,11 +9,7 @@ import { FieldProps } from 'formik';
 import { Omit } from './types';
 import { filterOutObjectKeys, isDisabled } from './utils';
 import { errorPropList, ErrorProps, withError } from './WithError';
-import {
-    formGroupPropList,
-    withFormGroup,
-    WithFormGroupProps,
-} from './WithFormGroup';
+import { formGroupPropList } from './WithFormGroup';
 
 export type InputGroupProps = FieldProps &
     BPFormGroupProps &
@@ -51,5 +47,5 @@ const InputComponent = (props: InputGroupProps) => {
 };
 
 export const InputGroup: React.ComponentType<InputGroupProps> = withError<
-    WithFormGroupProps<InputGroupProps>
->(withFormGroup<InputGroupProps>(InputComponent));
+    InputGroupProps
+>(InputComponent);

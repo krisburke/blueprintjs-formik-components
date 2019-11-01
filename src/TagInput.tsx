@@ -9,11 +9,7 @@ import { FieldProps } from 'formik';
 import { Omit } from './types';
 import { filterOutObjectKeys, isDisabled } from './utils';
 import { ErrorProps, withError, errorPropList } from './WithError';
-import {
-    withFormGroup,
-    WithFormGroupProps,
-    formGroupPropList,
-} from './WithFormGroup';
+import { formGroupPropList } from './WithFormGroup';
 
 export type TagInputProps = FieldProps &
     BPFormGroupProps &
@@ -76,5 +72,5 @@ const TagInputComponent = (props: TagInputProps) => {
 };
 
 export const TagInput: React.ComponentType<TagInputProps> = withError<
-    WithFormGroupProps<TagInputProps>
->(withFormGroup<TagInputProps>(TagInputComponent));
+    TagInputProps
+>(TagInputComponent);

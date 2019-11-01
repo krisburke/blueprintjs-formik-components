@@ -8,11 +8,7 @@ import { FieldProps } from 'formik';
 import { Omit } from './types';
 import { filterOutObjectKeys, isDisabled } from './utils';
 import { ErrorProps, withError, errorPropList } from './WithError';
-import {
-    formGroupPropList,
-    withFormGroup,
-    WithFormGroupProps,
-} from './WithFormGroup';
+import { formGroupPropList } from './WithFormGroup';
 
 export type NumericInputProps = FieldProps &
     BPFormGroupProps &
@@ -64,5 +60,5 @@ const NumericInputComponent = (props: NumericInputProps) => {
 };
 
 export const NumericInput: React.ComponentType<NumericInputProps> = withError<
-    WithFormGroupProps<NumericInputProps>
->(withFormGroup<NumericInputProps>(NumericInputComponent));
+    NumericInputProps
+>(NumericInputComponent);
