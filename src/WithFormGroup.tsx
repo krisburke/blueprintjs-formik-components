@@ -24,15 +24,12 @@ export function withFormGroup<T>(
         | React.FunctionComponent<WithFormGroupProps<T>>,
 ): React.FunctionComponent<WithFormGroupProps<T>> {
     const WithFormGroup = (props: WithFormGroupProps<T>) => {
-        const shouldRenderFormGroup = !!props.label || !!props.helperText;
         const formProps = filterObjectByKeys(props, formGroupPropList);
 
-        return shouldRenderFormGroup ? (
+        return (
             <BPFormGroup {...formProps}>
                 <WrappedComponent {...props} />
             </BPFormGroup>
-        ) : (
-            <WrappedComponent {...props} />
         );
     };
 

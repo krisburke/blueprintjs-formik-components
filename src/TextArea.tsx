@@ -8,11 +8,7 @@ import { FieldProps } from 'formik';
 import { Omit } from './types';
 import { filterOutObjectKeys, isDisabled } from './utils';
 import { ErrorProps, withError, errorPropList } from './WithError';
-import {
-    withFormGroup,
-    WithFormGroupProps,
-    formGroupPropList,
-} from './WithFormGroup';
+import { formGroupPropList } from './WithFormGroup';
 
 export type TextAreaProps = FieldProps &
     BPFormGroupProps &
@@ -49,5 +45,5 @@ const TextAreaComponent = (props: TextAreaProps) => {
 };
 
 export const TextArea: React.ComponentType<TextAreaProps> = withError<
-    WithFormGroupProps<TextAreaProps>
->(withFormGroup<TextAreaProps>(TextAreaComponent));
+    TextAreaProps
+>(TextAreaComponent);

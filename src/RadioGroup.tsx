@@ -33,7 +33,6 @@ const RadioComponent = (props: RadioProps) => {
 
     const handleChange = (event: any) => {
         const selected = event.target.value;
-        console.log('selected', selected);
         form.setFieldValue(field.name, selected);
         setValue(selected);
     };

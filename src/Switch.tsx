@@ -7,23 +7,29 @@ import { FieldProps } from 'formik';
 import { Omit } from './types';
 import { filterOutObjectKeys, isDisabled } from './utils';
 import { ErrorProps, withError, errorPropList } from './WithError';
+import { formGroupPropList } from './WithFormGroup';
 
 export type SwitchProps = FieldProps &
     Omit<BPSwitchProps, 'onChange' | 'checked' | 'value'> &
-    ErrorProps;
+    ErrorProps & { inlineLabel?: string };
 
 export const transformSwitchProps = (props: SwitchProps): BPSwitchProps => {
     const disabled = isDisabled(props);
     const {
         field: { name },
         form,
+        inlineLabel,
         ...rest
     } = props;
 
-    const filteredProps = filterOutObjectKeys(rest, errorPropList);
+    const filteredProps = filterOutObjectKeys(rest, [
+        ...errorPropList,
+        ...formGroupPropList,
+    ]);
 
     return {
         ...filteredProps,
+        label: inlineLabel,
         disabled,
         name,
     };

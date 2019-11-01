@@ -7,11 +7,7 @@ import {
 import { FieldProps } from 'formik';
 import { filterOutObjectKeys, isDisabled } from './utils';
 import { errorPropList, ErrorProps, withError } from './WithError';
-import {
-    formGroupPropList,
-    withFormGroup,
-    WithFormGroupProps,
-} from './WithFormGroup';
+import { formGroupPropList } from './WithFormGroup';
 
 export type HTMLSelectProps = FieldProps &
     BPFormGroupProps &
@@ -48,5 +44,5 @@ const HTMLSelectComponent = (props: HTMLSelectProps) => {
 };
 
 export const HTMLSelect: React.ComponentType<HTMLSelectProps> = withError<
-    WithFormGroupProps<HTMLSelectProps>
->(withFormGroup<HTMLSelectProps>(HTMLSelectComponent));
+    HTMLSelectProps
+>(HTMLSelectComponent);

@@ -7,10 +7,11 @@ import { FieldProps } from 'formik';
 import { filterOutObjectKeys, isDisabled } from './utils';
 import { Omit } from './types';
 import { errorPropList, ErrorProps, withError } from './WithError';
+import { formGroupPropList } from './WithFormGroup';
 
 export type CheckboxProps = FieldProps &
     Omit<BPCheckboxProps, 'onChange' | 'checked' | 'value'> &
-    ErrorProps;
+    ErrorProps & { inlineLabel?: string };
 
 export const transformCheckboxProps = (
     props: CheckboxProps,
@@ -19,13 +20,18 @@ export const transformCheckboxProps = (
     const {
         field: { name },
         form,
+        inlineLabel,
         ...rest
     } = props;
 
-    const filteredProps = filterOutObjectKeys(rest, errorPropList);
+    const filteredProps = filterOutObjectKeys(rest, [
+        ...errorPropList,
+        ...formGroupPropList,
+    ]);
 
     return {
         ...filteredProps,
+        label: inlineLabel,
         disabled,
         name,
     };
